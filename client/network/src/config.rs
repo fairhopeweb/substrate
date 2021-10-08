@@ -155,14 +155,14 @@ pub enum Role {
 }
 
 impl Role {
-	/// True for [`Role::Authority`].
+	/// True for `Role::Authority`
 	pub fn is_authority(&self) -> bool {
-		matches!(self, Self::Authority { .. })
+		matches!(self, Role::Authority { .. })
 	}
 
-	/// True for [`Role::Light`].
+	/// True for `Role::Light`
 	pub fn is_light(&self) -> bool {
-		matches!(self, Self::Light { .. })
+		matches!(self, Role::Light { .. })
 	}
 }
 
@@ -329,7 +329,7 @@ impl FromStr for MultiaddrWithPeerId {
 
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		let (peer_id, multiaddr) = parse_str_addr(s)?;
-		Ok(Self { peer_id, multiaddr })
+		Ok(MultiaddrWithPeerId { peer_id, multiaddr })
 	}
 }
 
