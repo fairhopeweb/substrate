@@ -21,7 +21,9 @@
 
 use super::*;
 
-use frame_benchmarking::{account, benchmarks_instance_pallet, whitelisted_caller};
+use frame_benchmarking::{
+	account, benchmarks_instance_pallet, impl_benchmark_test_suite, whitelisted_caller,
+};
 use frame_system::RawOrigin;
 use sp_runtime::traits::Bounded;
 
@@ -213,10 +215,10 @@ benchmarks_instance_pallet! {
 		assert!(Balances::<T, I>::reserved_balance(&user).is_zero());
 		assert_eq!(Balances::<T, I>::free_balance(&user), balance);
 	}
-
-	impl_benchmark_test_suite!(
-		Balances,
-		crate::tests_composite::ExtBuilder::default().build(),
-		crate::tests_composite::Test,
-	)
 }
+
+impl_benchmark_test_suite!(
+	Balances,
+	crate::tests_composite::ExtBuilder::default().build(),
+	crate::tests_composite::Test,
+);

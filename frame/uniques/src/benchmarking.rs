@@ -21,7 +21,8 @@
 
 use super::*;
 use frame_benchmarking::{
-	account, benchmarks_instance_pallet, whitelist_account, whitelisted_caller,
+	account, benchmarks_instance_pallet, impl_benchmark_test_suite, whitelist_account,
+	whitelisted_caller,
 };
 use frame_support::{
 	dispatch::UnfilteredDispatchable,
@@ -378,6 +379,6 @@ benchmarks_instance_pallet! {
 	verify {
 		assert_last_event::<T, I>(Event::ApprovalCancelled(class, instance, caller, delegate).into());
 	}
-
-	impl_benchmark_test_suite!(Uniques, crate::mock::new_test_ext(), crate::mock::Test);
 }
+
+impl_benchmark_test_suite!(Uniques, crate::mock::new_test_ext(), crate::mock::Test);

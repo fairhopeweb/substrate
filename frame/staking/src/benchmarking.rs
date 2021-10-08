@@ -887,13 +887,6 @@ benchmarks! {
 	verify {
 		assert!(!T::SortedListProvider::contains(&stash));
 	}
-
-	impl_benchmark_test_suite!(
-		Staking,
-		crate::mock::ExtBuilder::default().has_stakers(true),
-		crate::mock::Test,
-		exec_name = build_and_execute
-	);
 }
 
 #[cfg(test)]
@@ -1008,3 +1001,10 @@ mod tests {
 		});
 	}
 }
+
+impl_benchmark_test_suite!(
+	Staking,
+	crate::mock::ExtBuilder::default().has_stakers(true),
+	crate::mock::Test,
+	exec_name = build_and_execute
+);

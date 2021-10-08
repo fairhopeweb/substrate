@@ -134,10 +134,11 @@ frame_benchmarking::benchmarks! {
 			]
 		);
 	}
-
-	impl_benchmark_test_suite!(
-		Pallet,
-		crate::mock::ExtBuilder::default().build(),
-		crate::mock::Runtime,
-	)
 }
+
+use frame_benchmarking::impl_benchmark_test_suite;
+impl_benchmark_test_suite!(
+	Pallet,
+	crate::mock::ExtBuilder::default().build(),
+	crate::mock::Runtime,
+);
